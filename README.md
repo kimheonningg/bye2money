@@ -17,3 +17,7 @@
   - `pages`
   - `styles`
   - `utils`
+
+### Checklist (개발 순서)
+
+- 컴포넌트 5가지 먼저 개발 (테스트는 `App.tsx`에 import하여 확인)
