@@ -7,6 +7,11 @@
 - `src`
   - `assets`
   - `components`
+    - `Button`
+    - `CategoryTag`
+    - `CheckBox`
+    - `Modal`
+    - `TextInput`
   - `constants`
   - `hooks`
   - `pages`
