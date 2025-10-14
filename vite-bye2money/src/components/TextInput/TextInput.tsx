@@ -5,10 +5,7 @@ export type TextInputType = "default" | "textAreaOnly";
 export type TypingState = "placeholder" | "onFocus" | "onTyping" | "typed";
 
 export interface TextInputProps
-	extends Omit<
-		React.InputHTMLAttributes<HTMLInputElement>,
-		"className" | "size"
-	> {
+	extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "className"> {
 	inputType?: TextInputType;
 	label?: string;
 	error?: boolean;
@@ -35,7 +32,6 @@ const TextInput: React.FC<TextInputProps> = ({
 	forceTypingState,
 	id,
 	...rest
-	// TODO: 하나의 Type으로 만들어서 정리
 }) => {
 	const autoId = useId();
 	const inputId = id ?? autoId;
