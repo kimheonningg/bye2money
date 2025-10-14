@@ -1,0 +1,97 @@
+:root {
+	--c-fg: #111;
+	--c-bg: #fff;
+	--c-muted: #f1f3f7;
+	--c-border: #111;
+	--ring: rgba(0, 92, 255, 0.35);
+}
+
+.root {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	color: var(--c-fg);
+	cursor: pointer;
+}
+
+.size_L .box {
+	width: 22px;
+	height: 22px;
+}
+.size_M .box {
+	width: 18px;
+	height: 18px;
+}
+.size_S .box {
+	width: 16px;
+	height: 16px;
+}
+
+.inputNative {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+	width: 1px;
+	height: 1px;
+}
+
+.box {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 9999px;
+	border: 1px solid var(--c-border);
+	background: var(--c-bg);
+	transition: background-color 0.15s ease, border-color 0.15s ease,
+		opacity 0.15s ease;
+}
+
+.inputNative:focus-visible + .box {
+	outline: 3px solid var(--ring);
+	outline-offset: 2px;
+}
+
+.icon {
+	display: none;
+}
+.icon circle {
+	fill: var(--c-fg);
+}
+.icon path {
+	stroke: #fff;
+}
+
+.state_enabled {
+}
+.state_disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+.state_default .box {
+	background: var(--c-bg);
+	border-color: var(--c-border);
+}
+
+.state_selected .box {
+	border-color: var(--c-fg);
+	background: var(--c-bg);
+}
+
+.state_selected .icon {
+	display: block;
+}
+
+.text {
+	font-size: 14px;
+	line-height: 1.2;
+	user-select: none;
+}
+
+.root:hover .box {
+	opacity: 0.9;
+}
+.root:active .box {
+	opacity: 0.75;
+}

@@ -37,9 +37,24 @@
       - `pattern_*`
       - `size_*`
       - `state_*`
-      - `typing-*` : if user is currently typing something
-  -
+      - `typing_*` : if user is currently typing something
 
 ## Checklist (개발 순서)
 
-- 컴포넌트 5가지 먼저 개발 (테스트는 `App.tsx`에 import하여 확인)
+- 컴포넌트 5가지 먼저 개발 (테스트는 `App.tsx`에 import하여 확인)- 큰 틀만
+- Figma 확인하여 세부 디자인 디테일 구현
+
+## Minor TODOs
+
+- 아래의 중복되는 `components`들의 `*.module.css` 코드 하나의 파일에 정의하기
+
+```css
+:root {
+	--c-fg: #111; /* Basic text color*/
+	--c-bg: #fff; /* Basic background color */
+	--c-danger: #e11d48; /* Danger */
+	--ring: rgba(0, 92, 255, 0.35);
+}
+```
+
+- Component testing 용 page 만들기
