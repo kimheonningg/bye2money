@@ -1,0 +1,91 @@
+:root {
+	--c-fg: #111;
+	--c-bg: #fff;
+	--ring: rgba(0, 92, 255, 0.35);
+
+	--tag-life-bg: #a7b9e9;
+	--tag-shopping_beauty-bg: #d7ca6b;
+	--tag-medical_health-bg: #bcdfd3;
+	--tag-food-bg: #c5e0eb;
+	--tag-transportation-bg: #7db7bf;
+	--tag-culture_leisure-bg: #bda6e1;
+	--tag-salary-bg: #e39d5d;
+	--tag-other_income-bg: #a28878;
+	--tag-allowance-bg: #aacd7e;
+	--tag-unclassified-bg: #f0b0d3;
+}
+
+/* Base */
+.tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 92px;
+	height: 56px;
+	user-select: none;
+	white-space: nowrap;
+	color: black;
+	background: var(--c-bg);
+	text-align: center;
+}
+
+.type_solid {
+}
+
+/* Tone Variants */
+.tone_life {
+	background: var(--tag-life-bg);
+}
+.tone_shopping_beauty {
+	background: var(--tag-shopping_beauty-bg);
+}
+.tone_medical_health {
+	background: var(--tag-medical_health-bg);
+}
+.tone_food {
+	background: var(--tag-food-bg);
+}
+.tone_transportation {
+	background: var(--tag-transportation-bg);
+}
+.tone_culture_leisure {
+	background: var(--tag-culture_leisure-bg);
+}
+.tone_salary {
+	background: var(--tag-salary-bg);
+}
+.tone_other_income {
+	background: var(--tag-other_income-bg);
+}
+.tone_allowance {
+	background: var(--tag-allowance-bg);
+}
+.tone_unclassified {
+	background: var(--tag-unclassified-bg);
+}
+
+/* States */
+.state_enabled {
+}
+.state_disabled {
+	opacity: 0.45;
+	pointer-events: none;
+}
+.state_default {
+}
+.state_selected {
+	outline: 3px solid var(--ring);
+	outline-offset: 2px;
+}
+
+.label {
+	display: inline-block;
+	font-family: "Pretendard Variable", system-ui, -apple-system, Segoe UI, Roboto,
+		sans-serif;
+	font-weight: 300;
+	font-size: 12px;
+	line-height: 24px;
+	letter-spacing: 0;
+	color: black;
+	text-align: center;
+}
