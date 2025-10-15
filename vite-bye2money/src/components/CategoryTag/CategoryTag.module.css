@@ -80,8 +80,7 @@
 
 .label {
 	display: inline-block;
-	font-family: "Pretendard Variable", system-ui, -apple-system, Segoe UI, Roboto,
-		sans-serif;
+	font-family: "Pretendard Variable";
 	font-weight: 300;
 	font-size: 12px;
 	line-height: 24px;

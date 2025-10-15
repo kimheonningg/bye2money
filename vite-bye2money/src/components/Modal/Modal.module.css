@@ -22,8 +22,7 @@
 	height: 40px;
 	padding: 8px 16px;
 	border: 1px solid var(--border);
-	font-family: "Pretendard Variable", system-ui, -apple-system, Segoe UI, Roboto,
-		sans-serif;
+	font-family: "Pretendard Variable";
 	font-weight: 300;
 	font-size: 12px;
 	line-height: 24px;
@@ -35,8 +34,7 @@
 
 /* Placeholder Text */
 .input::placeholder {
-	font-family: "Pretendard Variable", system-ui, -apple-system, Segoe UI, Roboto,
-		sans-serif;
+	font-family: "Pretendard Variable";
 	font-weight: 600; /* SemiBold */
 	font-size: 12px;
 	line-height: 16px;
@@ -81,8 +79,7 @@
 }
 .title {
 	margin: 0;
-	font-family: "Pretendard Variable", system-ui, -apple-system, Segoe UI, Roboto,
-		sans-serif;
+	font-family: "Pretendard Variable";
 	font-weight: 300;
 	font-size: 16px;
 	line-height: 32px;

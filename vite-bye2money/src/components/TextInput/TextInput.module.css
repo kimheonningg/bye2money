@@ -55,8 +55,7 @@
 /* Placeholder text */
 .input::placeholder {
 	color: #777d84;
-	font-family: "Pretendard Variable", system-ui, -apple-system, Segoe UI, Roboto,
-		sans-serif;
+	font-family: "Pretendard Variable";
 	font-weight: 600;
 	font-size: 12px;
 	line-height: 16px;

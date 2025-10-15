@@ -1,0 +1,95 @@
+:root {
+	--c-fg: #111;
+	--c-bg: #fff;
+	--c-appbar: #73a4d0;
+}
+
+/* Appbar */
+.appbar {
+	width: 100%;
+	height: 216px;
+	background: var(--c-appbar);
+	color: var(--c-bg);
+	padding: 20px 0 0;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+}
+
+/* Inner container */
+.appbarInner {
+	width: 846px;
+	height: 112px;
+	margin: 0 auto;
+	padding: 8px 20px 16px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: absolute;
+	top: 40px;
+}
+
+/* Brand */
+.brand {
+	font-size: 24px;
+	font-weight: 400;
+	color: #000;
+	line-height: 32px;
+	font-family: "ChosunilboNM";
+	letter-spacing: 0%;
+}
+
+/* Month navigation */
+.monthNav {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+}
+
+/* Year / Month block */
+.mono {
+	display: grid;
+	grid-template-areas:
+		"year month"
+		"label label";
+	align-items: center;
+	column-gap: 12px;
+	row-gap: 4px;
+	display: flex;
+	flex-direction: column;
+}
+.year {
+	font-family: "Pretendard Variable";
+	grid-area: year;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 24px;
+	letter-spacing: 0;
+	color: #000000;
+}
+.monthNum {
+	font-family: "ChosunilboNM";
+	grid-area: month;
+	font-weight: 400;
+	font-size: 48px;
+	line-height: 56px;
+	letter-spacing: 0;
+	color: #000000;
+}
+.monthLabel {
+	font-family: "Pretendard Variable";
+	grid-area: label;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 24px;
+	letter-spacing: 0;
+	color: #000000;
+}
+
+/* Right-side tools */
+.tools {
+	display: flex;
+	gap: 6px;
+}

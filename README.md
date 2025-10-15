@@ -31,7 +31,10 @@ This project will open at `http://localhost:5173`
   - `hooks`
   - `pages`
   - `styles`
+  - `ui`
   - `utils`
+
+* `components` directory contains reusable common components, and `ui` directory contains larger, feature-specific ui components for the main page.
 
 ## Code Convention
 
