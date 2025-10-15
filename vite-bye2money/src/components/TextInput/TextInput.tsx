@@ -2,7 +2,12 @@ import React, { useId, useMemo, useState } from "react";
 import styles from "./TextInput.module.css";
 
 export type TextInputType = "default" | "textAreaOnly";
-export type TypingState = "placeholder" | "onFocus" | "onTyping" | "typed";
+export type TextInputStates = "enabled" | "active" | "disabled" | "error";
+export type TextInputTypingStates =
+	| "placeholder"
+	| "onFocus"
+	| "typing"
+	| "typed";
 
 export interface TextInputProps
 	extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "className"> {
@@ -13,7 +18,7 @@ export interface TextInputProps
 	rows?: number;
 	onValueChange?: (value: string) => void;
 	value?: string;
-	forceTypingState?: TypingState;
+	forceTypingState?: TextInputTypingStates;
 }
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -69,23 +74,26 @@ const TextInput: React.FC<TextInputProps> = ({
 		onBlur?.(e as React.FocusEvent<HTMLInputElement>);
 	};
 
-	const inferredTypingState: TypingState = useMemo(() => {
+	const inferredTypingState: TextInputTypingStates = useMemo(() => {
 		if (forceTypingState) return forceTypingState;
 		if (!focused && !currentValue) return "placeholder";
 		if (focused && !currentValue) return "onFocus";
-		// Wait 150ms to regard as input
 		if (focused && currentValue && Date.now() - recentlyTypedAt < 150)
-			return "onTyping";
+			return "typing";
 		if (!focused && currentValue) return "typed";
-		return "onTyping";
+		return "typing";
 	}, [forceTypingState, focused, currentValue, recentlyTypedAt]);
 
 	const classes = [
 		styles.root,
 		styles[`type_${inputType}`],
-		focused ? styles.state_active : styles.state_enabled,
-		error ? styles.state_error : "",
-		disabled ? styles.state_disabled : "",
+		disabled
+			? styles.state_disabled
+			: error
+			? styles.state_error
+			: focused
+			? styles.state_active
+			: styles.state_enabled,
 		styles[`typing_${inferredTypingState}`],
 	]
 		.filter(Boolean)
