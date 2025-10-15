@@ -2,6 +2,21 @@
 
 전기정보공학부 김희원 웹가계부 프로젝트
 
+## How to run this project
+
+```bash
+# move to the project directory
+cd vite-bye2money
+
+# install dependencies if needed
+npm install
+
+# run this project
+npm run dev
+```
+
+This project will open at `http://localhost:5173`
+
 ## Project Structure
 
 - `src`
@@ -38,6 +53,10 @@
       - `size_*`
       - `state_*`
       - `typing_*` : if user is currently typing something
+
+## Component Testing
+
+5 common components' UI & features are tested using `ComponentTestPage.tsx`. This page can be accessed by: `http://localhost:5173/component-test`
 
 ## Checklist (개발 순서)
 
