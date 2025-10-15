@@ -36,6 +36,10 @@ This project will open at `http://localhost:5173`
 
 * `components` directory contains reusable common components, and `ui` directory contains larger, feature-specific ui components for the main page.
 
+## Color system
+
+Defined at [`colors.css`](/vite-bye2money/src/styles/colors.css)
+
 ## Code Convention
 
 - Handler: name starts with `handle`
@@ -63,20 +67,8 @@ This project will open at `http://localhost:5173`
 
 ## Checklist (개발 순서)
 
-- 컴포넌트 5가지 먼저 개발 (테스트는 `App.tsx`에 import하여 확인)- 큰 틀만
-- Figma 확인하여 세부 디자인 디테일 구현
-
-## Minor TODOs
-
-- 아래의 중복되는 `components`들의 `*.module.css` 코드 하나의 파일에 정의하기
-
-```css
-:root {
-	--c-fg: #111; /* Basic text color*/
-	--c-bg: #fff; /* Basic background color */
-	--c-danger: #e11d48; /* Danger */
-	--ring: rgba(0, 92, 255, 0.35);
-}
-```
-
-- Component testing 용 page 만들기
+- 기본 컴포넌트 5가지 먼저 개발 (테스트는 `App.tsx`에 import하여 확인)- 큰 틀만 V
+- Figma 확인하여 컴포넌트들의 세부 디자인 디테일 구현 V
+- Color system 정의하기 V, 적용하도록 코드 수정
+- 메인 페이지 컴포넌트 생성
+  - Header V
