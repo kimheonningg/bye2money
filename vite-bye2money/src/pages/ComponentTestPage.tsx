@@ -10,7 +10,7 @@ import Modal from "../components/Modal/Modal";
 const ComponentTestPage: React.FC = () => {
 	const [open, setOpen] = useState(false); // for Modal open
 	const [payMethod, setPayMethod] = useState(""); // for Modal placeholder
-	const [checked, setChecked] = useState(false); // for Checkbox
+	const [selected, setSelected] = useState(false); // for Checkbox
 
 	return (
 		<div style={{ padding: 24, display: "grid", gap: 24 }}>
@@ -52,15 +52,9 @@ const ComponentTestPage: React.FC = () => {
 			{/* CheckBox */}
 			<section>
 				<h2>CheckBox</h2>
-				<div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+				<div style={{ display: "flex", gap: 24, alignItems: "center" }}>
 					<CheckBox label="Default" />
-					<CheckBox label="Selected" defaultChecked />
-					<CheckBox label="Disabled" disabled />
-					<CheckBox
-						label={`Controlled: ${checked ? "ON" : "OFF"}`}
-						checked={checked}
-						onCheckedChange={setChecked}
-					/>
+					<CheckBox label="Selected" selected />
 				</div>
 			</section>
 
