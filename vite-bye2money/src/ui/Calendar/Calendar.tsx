@@ -12,10 +12,9 @@ import {
 	parseISO,
 } from "date-fns";
 
-export type MoneyEntry = {
-	date: string; // "YYYY-MM-DD"
-	amount: number; // +: income (blue), -: expense (red)
-};
+import type { MoneyEntry } from "../../types/types";
+
+import { WEEK_LABELS } from "./const";
 
 export interface CalendarProps {
 	year: number;
@@ -23,8 +22,6 @@ export interface CalendarProps {
 	entries: MoneyEntry[];
 	selectedDate: string; // "YYYY-MM-DD"
 }
-
-const WEEK_LABELS = ["일", "월", "화", "수", "목", "금", "토"];
 
 const formatKRW = (n: number) => new Intl.NumberFormat("ko-KR").format(n);
 

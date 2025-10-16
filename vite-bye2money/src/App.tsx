@@ -6,7 +6,7 @@ import type { HeaderToolIconType } from "./types/types";
 
 import Header from "./ui/Header/Header";
 import Calendar from "./ui/Calendar/Calendar";
-import type { MoneyEntry } from "./ui/Calendar/Calendar";
+import type { MoneyEntry } from "./types/types";
 
 function App() {
 	const [year, setYear] = useState<number>(2025);
