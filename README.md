@@ -40,6 +40,10 @@ This project will open at `http://localhost:5173`
 
 Defined at [`colors.css`](/vite-bye2money/src/styles/colors.css)
 
+## Icons
+
+Using Material UI
+
 ## Code Convention
 
 - Handler: name starts with `handle`

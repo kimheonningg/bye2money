@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Header.module.css";
 import Button from "../../components/Button/Button";
+
+import {
+	DescriptionOutlined,
+	CalendarMonthOutlined,
+	BarChartOutlined,
+} from "@mui/icons-material";
 
 export interface HeaderProps {
 	brand?: string;
@@ -11,6 +17,8 @@ export interface HeaderProps {
 	onNext?: () => void;
 }
 
+export type ToolIconType = "records" | "calendar" | "analytics" | null;
+
 const Header: React.FC<HeaderProps> = ({
 	brand = "Wise Wallet",
 	year,
@@ -19,6 +27,8 @@ const Header: React.FC<HeaderProps> = ({
 	onPrev,
 	onNext,
 }) => {
+	const [activeTool, setActiveTool] = useState<ToolIconType>(null);
+
 	return (
 		<header className={styles.appbar}>
 			<div className={styles.appbarInner}>
@@ -41,16 +51,33 @@ const Header: React.FC<HeaderProps> = ({
 				</div>
 
 				<div className={styles.tools}>
-					{/* FIXME: replace icons */}
-					<Button buttonType="ghost" aria-label="docs">
-						🗂
-					</Button>
-					<Button buttonType="ghost" aria-label="calendar">
-						🗓
-					</Button>
-					<Button buttonType="ghost" aria-label="chart">
-						📊
-					</Button>
+					<button
+						className={styles.tool}
+						aria-label="records"
+						aria-pressed={activeTool === "records"}
+						data-active={activeTool === "records"}
+						onClick={() => setActiveTool("records")}
+					>
+						<DescriptionOutlined className={styles.icon} />
+					</button>
+					<button
+						className={styles.tool}
+						aria-label="calendar"
+						aria-pressed={activeTool === "calendar"}
+						data-active={activeTool === "calendar"}
+						onClick={() => setActiveTool("calendar")}
+					>
+						<CalendarMonthOutlined className={styles.icon} />
+					</button>
+					<button
+						className={styles.tool}
+						aria-label="analytics"
+						aria-pressed={activeTool === "analytics"}
+						data-active={activeTool === "analytics"}
+						onClick={() => setActiveTool("analytics")}
+					>
+						<BarChartOutlined className={styles.icon} />
+					</button>
 				</div>
 			</div>
 		</header>

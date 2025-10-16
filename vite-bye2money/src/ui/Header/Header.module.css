@@ -1,15 +1,9 @@
-:root {
-	--c-fg: #111;
-	--c-bg: #fff;
-	--c-appbar: #73a4d0;
-}
-
 /* Appbar */
 .appbar {
 	width: 100%;
 	height: 216px;
-	background: var(--c-appbar);
-	color: var(--c-bg);
+	background: var(--token-colorchip-80);
+	color: var(--token-neutral-surface-default);
 	padding: 20px 0 0;
 	position: relative;
 	display: flex;
@@ -35,7 +29,7 @@
 .brand {
 	font-size: 24px;
 	font-weight: 400;
-	color: #000;
+	color: var(--token-neutral-text-default);
 	line-height: 32px;
 	font-family: "ChosunilboNM";
 	letter-spacing: 0%;
@@ -67,7 +61,7 @@
 	font-size: 14px;
 	line-height: 24px;
 	letter-spacing: 0;
-	color: #000000;
+	color: var(--token-neutral-text-default);
 }
 .monthNum {
 	font-family: "ChosunilboNM";
@@ -76,7 +70,7 @@
 	font-size: 48px;
 	line-height: 56px;
 	letter-spacing: 0;
-	color: #000000;
+	color: var(--token-neutral-text-default);
 }
 .monthLabel {
 	font-family: "Pretendard Variable";
@@ -85,11 +79,58 @@
 	font-size: 14px;
 	line-height: 24px;
 	letter-spacing: 0;
-	color: #000000;
+	color: var(--token-neutral-text-default);
 }
 
 /* Right-side tools */
 .tools {
 	display: flex;
-	gap: 6px;
+	align-items: center;
+	gap: 12px;
+	color: var(--token-neutral-text-default);
+}
+.tool {
+	width: 56px;
+	height: 56px;
+	border: none;
+	background: transparent;
+	border-radius: 9999px;
+	display: grid;
+	place-items: center;
+	cursor: pointer;
+	position: relative;
+	padding: 0;
+}
+.tool::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: transparent;
+	transition: background 0.15s ease, transform 0.03s ease, box-shadow 0.15s ease;
+}
+.tool:hover::before,
+.tool:focus-visible::before {
+	background: var(--token-neutral-surface-default);
+}
+.tool:active::before {
+	background: var(--token-neutral-surface-default);
+	transform: scale(0.98);
+}
+
+/* Icon currently clicked */
+.tool[data-active="true"]::before {
+	background: var(--token-neutral-surface-default);
+}
+
+.icon {
+	width: 24px;
+	height: 24px;
+	font-size: 24px !important;
+	color: var(--token-neutral-text-default);
+	z-index: 1;
+}
+
+.tool:focus-visible {
+	outline-offset: 2px;
 }
