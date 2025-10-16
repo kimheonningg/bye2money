@@ -71,7 +71,9 @@ Using Material UI
 
 ## Component Testing
 
-5 common components' UI & features are tested using `ComponentTestPage.tsx`. This page can be accessed by: `http://localhost:5173/component-test`
+5 common components' UI & features are tested using `ComponentTestPage.tsx`.
+
+This page can be accessed by: `http://localhost:5173/component-test`
 
 ## Checklist (개발 순서)
 
