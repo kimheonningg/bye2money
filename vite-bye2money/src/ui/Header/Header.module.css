@@ -3,8 +3,6 @@
 	width: 100%;
 	height: 216px;
 	background: var(--token-colorchip-80);
-	color: var(--token-neutral-surface-default);
-	padding: 20px 0 0;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -17,7 +15,6 @@
 	width: 846px;
 	height: 112px;
 	margin: 0 auto;
-	padding: 8px 20px 16px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -40,10 +37,18 @@
 	display: flex;
 	align-items: center;
 	gap: 18px;
+	width: 232px;
+}
+
+.monthNavArrow {
+	width: 32px;
+	height: 32px;
+	color: var(--token-neutral-text-default);
+	cursor: pointer;
 }
 
 /* Year / Month block */
-.mono {
+.monthDisplay {
 	display: grid;
 	grid-template-areas:
 		"year month"
@@ -53,6 +58,7 @@
 	row-gap: 4px;
 	display: flex;
 	flex-direction: column;
+	width: 120px;
 }
 .year {
 	font-family: "Pretendard Variable";
@@ -86,7 +92,7 @@
 .tools {
 	display: flex;
 	align-items: center;
-	gap: 12px;
+	gap: 4px;
 	color: var(--token-neutral-text-default);
 }
 .tool {
@@ -95,6 +101,7 @@
 	border: none;
 	background: transparent;
 	border-radius: 9999px;
+	padding: 8px;
 	display: grid;
 	place-items: center;
 	cursor: pointer;
@@ -106,6 +113,7 @@
 	position: absolute;
 	inset: 0;
 	border-radius: inherit;
+	padding: 8px;
 	background: transparent;
 	transition: background 0.15s ease, transform 0.03s ease, box-shadow 0.15s ease;
 }

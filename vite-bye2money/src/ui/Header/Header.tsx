@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./Header.module.css";
-import Button from "../../components/Button/Button";
 
 import {
 	DescriptionOutlined,
@@ -8,26 +7,46 @@ import {
 	BarChartOutlined,
 } from "@mui/icons-material";
 
+import { MONTHS } from "./const";
+import { stepMonth } from "./monthNav";
+
 export interface HeaderProps {
 	brand?: string;
 	year: number;
 	month: number; // 1~12
-	monthLabel?: string;
-	onPrev?: () => void;
-	onNext?: () => void;
 }
 
-export type ToolIconType = "records" | "calendar" | "analytics" | null;
+export type ToolIconType = "records" | "calendar" | "analytics";
 
-const Header: React.FC<HeaderProps> = ({
-	brand = "Wise Wallet",
-	year,
-	month,
-	monthLabel = "August",
-	onPrev,
-	onNext,
-}) => {
-	const [activeTool, setActiveTool] = useState<ToolIconType>(null);
+const Header = ({ brand, year, month }: HeaderProps) => {
+	const [activeTool, setActiveTool] = useState<ToolIconType>("records");
+	const [currentYear, setCurrentYear] = useState(year);
+	const [currentMonth, setCurrentMonth] = useState(month);
+	const [currentLabel, setCurrentLabel] = useState(MONTHS[month - 1].label);
+
+	const handlePrev = () => {
+		// Go to previous month
+		const {
+			year: newYear,
+			month: newMonth,
+			label: newLabel,
+		} = stepMonth(currentYear, currentMonth, -1);
+		setCurrentYear(newYear);
+		setCurrentMonth(newMonth);
+		setCurrentLabel(newLabel);
+	};
+
+	const handleNext = () => {
+		// Go to next month
+		const {
+			year: newYear,
+			month: newMonth,
+			label: newLabel,
+		} = stepMonth(currentYear, currentMonth, 1);
+		setCurrentYear(newYear);
+		setCurrentMonth(newMonth);
+		setCurrentLabel(newLabel);
+	};
 
 	return (
 		<header className={styles.appbar}>
@@ -35,19 +54,31 @@ const Header: React.FC<HeaderProps> = ({
 				<div className={styles.brand}>{brand}</div>
 
 				<div className={styles.monthNav}>
-					<Button buttonType="ghost" aria-label="prev" onClick={onPrev}>
-						‹
-					</Button>
-
-					<div className={styles.mono}>
-						<div className={styles.year}>{year}</div>
-						<div className={styles.monthNum}>{month}</div>
-						<div className={styles.monthLabel}>{monthLabel}</div>
+					<div
+						className={styles.monthNavArrow}
+						role="button"
+						aria-label="previous month"
+						tabIndex={0}
+						onClick={handlePrev}
+					>
+						{"<"}
 					</div>
 
-					<Button buttonType="ghost" aria-label="next" onClick={onNext}>
-						›
-					</Button>
+					<div className={styles.monthDisplay}>
+						<div className={styles.year}>{currentYear}</div>
+						<div className={styles.monthNum}>{currentMonth}</div>
+						<div className={styles.monthLabel}>{currentLabel}</div>
+					</div>
+
+					<div
+						className={styles.monthNavArrow}
+						role="button"
+						aria-label="next month"
+						tabIndex={0}
+						onClick={handleNext}
+					>
+						{">"}
+					</div>
 				</div>
 
 				<div className={styles.tools}>
