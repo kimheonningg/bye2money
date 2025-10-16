@@ -1,14 +1,8 @@
-:root {
-	--c-fg: #111;
-	--c-bg: #fff;
-	--c-border: #111;
-}
-
 .root {
 	display: inline-flex;
 	align-items: center;
 	gap: 10px;
-	color: var(--c-fg);
+	color: var(--token-neutral-text-default);
 	cursor: pointer;
 	user-select: none;
 }
@@ -21,8 +15,8 @@
 	width: 16px;
 	height: 16px;
 	border-radius: 9999px;
-	border: 1px solid var(--c-border);
-	background: var(--c-bg);
+	border: 1px solid var(--token-neutral-border-default);
+	background: transparent;
 	transition: all 0.15s ease;
 }
 
@@ -31,17 +25,17 @@
 }
 
 .icon circle {
-	fill: var(--c-fg);
+	fill: var(--primitive-grayscale-400);
 }
 
 .icon path {
-	stroke: #fff;
+	stroke: var(--token-neutral-text-rev-default);
 }
 
 /* State - default(unselected) or selected */
 .state_default .box {
-	background: var(--c-bg);
-	border-color: var(--c-border);
+	background: transparent;
+	border-color: var(--token-neutral-border-default);
 }
 
 .state_selected .icon {
@@ -49,8 +43,8 @@
 }
 
 .state_selected .box {
-	background: var(--c-fg);
-	border-color: var(--c-fg);
+	background: var(--token-neutral-text-default);
+	border-color: var(--token-neutral-text-default);
 }
 
 /* Text */
@@ -60,15 +54,13 @@
 	font-size: 12px;
 	line-height: 24px;
 	letter-spacing: 0;
-	color: #000000;
+	color: var(--token-neutral-text-default);
 	user-select: none;
 }
 
 /* Interactions */
 .root:hover .box {
-	opacity: 0.9;
 }
 
 .root:active .box {
-	opacity: 0.75;
 }
