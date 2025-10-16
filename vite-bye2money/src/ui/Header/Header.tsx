@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 
 import {
@@ -14,15 +14,22 @@ export interface HeaderProps {
 	brand?: string;
 	year: number;
 	month: number; // 1~12
+	onChangeMonth: (year: number, month: number) => void;
 }
 
 export type ToolIconType = "records" | "calendar" | "analytics";
 
-const Header = ({ brand, year, month }: HeaderProps) => {
+const Header = ({ brand, year, month, onChangeMonth }: HeaderProps) => {
 	const [activeTool, setActiveTool] = useState<ToolIconType>("records");
 	const [currentYear, setCurrentYear] = useState(year);
 	const [currentMonth, setCurrentMonth] = useState(month);
 	const [currentLabel, setCurrentLabel] = useState(MONTHS[month - 1].label);
+
+	useEffect(() => {
+		setCurrentYear(year);
+		setCurrentMonth(month);
+		setCurrentLabel(MONTHS[month - 1].label);
+	}, [year, month]);
 
 	const handlePrev = () => {
 		// Go to previous month
@@ -34,6 +41,7 @@ const Header = ({ brand, year, month }: HeaderProps) => {
 		setCurrentYear(newYear);
 		setCurrentMonth(newMonth);
 		setCurrentLabel(newLabel);
+		onChangeMonth(newYear, newMonth);
 	};
 
 	const handleNext = () => {
@@ -46,6 +54,8 @@ const Header = ({ brand, year, month }: HeaderProps) => {
 		setCurrentYear(newYear);
 		setCurrentMonth(newMonth);
 		setCurrentLabel(newLabel);
+
+		onChangeMonth(newYear, newMonth);
 	};
 
 	return (

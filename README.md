@@ -65,6 +65,10 @@ Using Material UI
       - `state_*`
       - `typing_*` : if user is currently typing something
 
+## Notes
+
+- 공통 변수는 `App.tsx`에서 관리
+
 ## Component Testing
 
 5 common components' UI & features are tested using `ComponentTestPage.tsx`. This page can be accessed by: `http://localhost:5173/component-test`
