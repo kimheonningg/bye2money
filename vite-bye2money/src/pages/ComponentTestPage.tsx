@@ -8,9 +8,9 @@ import CategoryTag from "../components/CategoryTag/CategoryTag";
 import Modal from "../components/Modal/Modal";
 
 const ComponentTestPage = () => {
-	const [open, setOpen] = useState(false); // for Modal open
-	const [payMethod, setPayMethod] = useState(""); // for Modal placeholder
-	const [selected, setSelected] = useState(false); // for Checkbox
+	const [open, setOpen] = useState<boolean>(false); // for Modal open
+	const [payMethod, setPayMethod] = useState<string>(""); // for Modal placeholder
+	const [selected, setSelected] = useState<boolean>(false); // for Checkbox
 
 	return (
 		<div style={{ padding: 24, display: "grid", gap: 24 }}>

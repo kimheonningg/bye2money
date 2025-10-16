@@ -45,7 +45,7 @@ const TextInput = ({
 	const [uncontrolled, setUncontrolled] = useState<string>(
 		defaultValue?.toString() ?? ""
 	);
-	const [focused, setFocused] = useState(false);
+	const [focused, setFocused] = useState<boolean>(false);
 	const [recentlyTypedAt, setRecentlyTypedAt] = useState<number>(0);
 
 	const currentValue = isControlled ? (value as string) : uncontrolled;

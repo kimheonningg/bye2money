@@ -7,23 +7,34 @@ import {
 	BarChartOutlined,
 } from "@mui/icons-material";
 
+import type { HeaderToolIconType } from "../../types/types";
+
 import { MONTHS } from "./const";
 import { stepMonth } from "./monthNav";
 
 export interface HeaderProps {
 	brand?: string;
+	currentTab: HeaderToolIconType;
+	setCurrentTab: (newTab: HeaderToolIconType) => void;
 	year: number;
 	month: number; // 1~12
 	onChangeMonth: (year: number, month: number) => void;
 }
 
-export type ToolIconType = "records" | "calendar" | "analytics";
-
-const Header = ({ brand, year, month, onChangeMonth }: HeaderProps) => {
-	const [activeTool, setActiveTool] = useState<ToolIconType>("records");
-	const [currentYear, setCurrentYear] = useState(year);
-	const [currentMonth, setCurrentMonth] = useState(month);
-	const [currentLabel, setCurrentLabel] = useState(MONTHS[month - 1].label);
+const Header = ({
+	brand,
+	currentTab,
+	setCurrentTab,
+	year,
+	month,
+	onChangeMonth,
+}: HeaderProps) => {
+	const [activeTool, setActiveTool] = useState<HeaderToolIconType>("records");
+	const [currentYear, setCurrentYear] = useState<number>(year);
+	const [currentMonth, setCurrentMonth] = useState<number>(month);
+	const [currentLabel, setCurrentLabel] = useState<string>(
+		MONTHS[month - 1].label
+	);
 
 	useEffect(() => {
 		setCurrentYear(year);
@@ -95,27 +106,27 @@ const Header = ({ brand, year, month, onChangeMonth }: HeaderProps) => {
 					<button
 						className={styles.tool}
 						aria-label="records"
-						aria-pressed={activeTool === "records"}
-						data-active={activeTool === "records"}
-						onClick={() => setActiveTool("records")}
+						aria-pressed={currentTab === "records"}
+						data-active={currentTab === "records"}
+						onClick={() => setCurrentTab("records")}
 					>
 						<DescriptionOutlined className={styles.icon} />
 					</button>
 					<button
 						className={styles.tool}
 						aria-label="calendar"
-						aria-pressed={activeTool === "calendar"}
-						data-active={activeTool === "calendar"}
-						onClick={() => setActiveTool("calendar")}
+						aria-pressed={currentTab === "calendar"}
+						data-active={currentTab === "calendar"}
+						onClick={() => setCurrentTab("calendar")}
 					>
 						<CalendarMonthOutlined className={styles.icon} />
 					</button>
 					<button
 						className={styles.tool}
 						aria-label="analytics"
-						aria-pressed={activeTool === "analytics"}
-						data-active={activeTool === "analytics"}
-						onClick={() => setActiveTool("analytics")}
+						aria-pressed={currentTab === "analytics"}
+						data-active={currentTab === "analytics"}
+						onClick={() => setCurrentTab("analytics")}
 					>
 						<BarChartOutlined className={styles.icon} />
 					</button>
