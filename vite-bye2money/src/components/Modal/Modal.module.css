@@ -1,11 +1,5 @@
 :root {
-	--c-fg: #111;
-	--c-bg: #fff;
-	--ring: rgba(0, 92, 255, 0.35);
 	--shadow: 0 6px 24px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
-	--border: #111;
-	--muted: #f1f3f7;
-	--placeholder-color: #777d84;
 }
 
 .root {
@@ -21,12 +15,12 @@
 	width: 100%;
 	height: 40px;
 	padding: 8px 16px;
-	border: 1px solid var(--border);
+	border: 1px solid var(--token-neutral-border-default);
 	font-family: "Pretendard Variable";
 	font-weight: 300;
 	font-size: 12px;
 	line-height: 24px;
-	color: var(--c-fg);
+	color: var(--token-neutral-text-default);
 	background-color: #f1f4f8;
 	transition: border-color 0.15s ease, background-color 0.15s ease;
 	border-radius: 8px;
@@ -35,11 +29,11 @@
 /* Placeholder Text */
 .input::placeholder {
 	font-family: "Pretendard Variable";
-	font-weight: 600; /* SemiBold */
+	font-weight: 600;
 	font-size: 12px;
 	line-height: 16px;
 	letter-spacing: 0;
-	color: var(--placeholder-color);
+	color: var(--token-neutral-surface-point);
 }
 
 .state_open {
@@ -62,9 +56,9 @@
 .panel {
 	position: relative;
 	width: 384px;
-	background: var(--c-bg);
-	color: var(--c-fg);
-	border: 1px solid var(--border);
+	background: var(--token-neutral-surface-default);
+	color: var(--token-neutral-text-default);
+	border: 1px solid var(--token-neutral-border-default);
 	border-radius: 4px;
 	box-shadow: var(--shadow);
 	display: grid;
@@ -97,7 +91,7 @@
 .footer {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	border-top: 1px solid var(--border);
+	border-top: 1px solid var(--token-neutral-border-default);
 	height: 56px;
 }
 
@@ -105,15 +99,15 @@
 	appearance: none;
 	border-radius: 0 !important;
 	border: none !important;
-	background: var(--c-bg) !important;
-	color: var(--c-fg) !important;
+	background: var(--token-neutral-surface-default) !important;
+	color: var(--token-neutral-text-default) !important;
 	font-weight: 700 !important;
 	height: 56px !important;
 }
 
 /* Middle separation line of the footer */
 .footer > *:first-child {
-	border-right: 1px solid var(--border) !important;
+	border-right: 1px solid var(--token-neutral-border-default) !important;
 }
 
 /* Hover/active */

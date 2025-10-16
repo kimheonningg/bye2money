@@ -1,18 +1,8 @@
-:root {
-	--c-fg: #111;
-	--c-bg: #fff;
-	--c-muted: #f1f4f8; /* placeholder container background */
-	--c-border: #000;
-	--c-danger: #e93b5a;
-	--c-disabled: #fbfcfd;
-	--ring: rgba(0, 92, 255, 0.35);
-}
-
 /* Overall container of label + input */
 .root {
 	display: grid;
 	gap: 6px;
-	color: var(--c-fg);
+	color: var(--token-neutral-text-default);
 	cursor: text;
 	width: 320px;
 	height: 40px;
@@ -25,7 +15,7 @@
 .type_default .input {
 	height: 40px;
 	border-radius: 8px;
-	background: var(--c-muted);
+	background: var(----token-neutral-surface-point);
 	border: 1px solid transparent;
 	padding: 0 14px;
 }
@@ -34,7 +24,7 @@
 .type_textAreaOnly .textarea {
 	height: 40px;
 	border-radius: 8px;
-	background: var(--c-muted);
+	background: var(----token-neutral-surface-point);
 	border: 1px solid transparent;
 	padding: 10px 14px;
 	resize: vertical;
@@ -45,7 +35,7 @@
 	width: 100%;
 	font-size: 14px;
 	line-height: 1.2;
-	color: var(--c-fg);
+	color: var(--token-neutral-text-default);
 	background: transparent;
 	outline: none;
 	box-sizing: border-box;
@@ -68,29 +58,27 @@
 }
 
 .state_active .input {
-	background: var(--c-bg);
-	border-color: var(--c-border);
+	background: var(--token-neutral-surface-default);
+	border-color: var(--token-neutral-border-default);
 	border-width: 1px;
 	border-style: solid;
 }
 
 .state_disabled .input {
-	background: var(--c-disabled);
+	background: var(--token-neutral-surface-weak);
 	pointer-events: none;
 	opacity: 0.5;
 }
 
 .state_error .input {
-	background: var(--c-bg);
-	border-color: var(--c-danger);
+	background: var(--token-neutral-surface-default);
+	border-color: var(--token-danger-border-default);
 	border-width: 1px;
 	border-style: solid;
 }
 
 /* Focus ring (Active) */
 .state_active .input:focus {
-	outline: 3px solid var(--ring);
-	outline-offset: 2px;
 }
 
 /* Typing States */
@@ -111,7 +99,4 @@
 
 /* Label */
 .label {
-	font-size: 12px;
-	color: #6b7280;
-	user-select: none;
 }
