@@ -22,7 +22,7 @@ export interface ButtonProps
 	fixedWidth?: number | string;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
 	children,
 	buttonType = "ghost",
 	size = "M",
@@ -35,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
 	flexType = "flexible",
 	fixedWidth,
 	...rest
-}) => {
+}: ButtonProps) => {
 	const classes = [
 		styles.button,
 		styles[`type_${buttonType}`],

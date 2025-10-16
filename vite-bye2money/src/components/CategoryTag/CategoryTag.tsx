@@ -20,13 +20,13 @@ export interface CategoryTagProps
 	disabled?: boolean;
 }
 
-const CategoryTag: React.FC<CategoryTagProps> = ({
+const CategoryTag = ({
 	children,
 	tone = "life",
 	selected = false,
 	disabled = false,
 	...rest
-}) => {
+}: CategoryTagProps) => {
 	const classes = [
 		styles.tag,
 		styles[`tone_${tone}`],

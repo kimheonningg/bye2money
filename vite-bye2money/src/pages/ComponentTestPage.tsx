@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Button from "../components/Button/Button";
@@ -7,7 +7,7 @@ import CheckBox from "../components/CheckBox/Checkbox";
 import CategoryTag from "../components/CategoryTag/CategoryTag";
 import Modal from "../components/Modal/Modal";
 
-const ComponentTestPage: React.FC = () => {
+const ComponentTestPage = () => {
 	const [open, setOpen] = useState(false); // for Modal open
 	const [payMethod, setPayMethod] = useState(""); // for Modal placeholder
 	const [selected, setSelected] = useState(false); // for Checkbox

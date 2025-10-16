@@ -21,7 +21,7 @@ export interface TextInputProps
 	forceTypingState?: TextInputTypingStates;
 }
 
-const TextInput: React.FC<TextInputProps> = ({
+const TextInput = ({
 	inputType = "default",
 	label,
 	error = false,
@@ -37,7 +37,7 @@ const TextInput: React.FC<TextInputProps> = ({
 	forceTypingState,
 	id,
 	...rest
-}) => {
+}: TextInputProps) => {
 	const autoId = useId();
 	const inputId = id ?? autoId;
 

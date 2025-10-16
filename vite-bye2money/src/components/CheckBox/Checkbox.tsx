@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./CheckBox.module.css";
 
 export interface CheckBoxProps {
@@ -7,11 +7,7 @@ export interface CheckBoxProps {
 	onChange?: (selected: boolean) => void;
 }
 
-const CheckBox: React.FC<CheckBoxProps> = ({
-	label = "LABEL",
-	selected,
-	onChange,
-}) => {
+const CheckBox = ({ label = "LABEL", selected, onChange }: CheckBoxProps) => {
 	const [isselected, setIsselected] = useState<boolean>(!!selected);
 
 	const toggle = () => {

@@ -19,7 +19,7 @@ export interface ModalProps
 	footer?: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({
+const Modal = ({
 	open,
 	onClose,
 	onConfirm,
@@ -34,7 +34,7 @@ const Modal: React.FC<ModalProps> = ({
 	id,
 	children,
 	...rest
-}) => {
+}: ModalProps) => {
 	const autoId = useId();
 	const dialogId = id ?? autoId;
 	const panelRef = useRef<HTMLDivElement>(null);
