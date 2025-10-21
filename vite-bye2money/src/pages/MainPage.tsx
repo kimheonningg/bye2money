@@ -25,8 +25,21 @@ function MainPage() {
 		{ date: "2025-10-17", amount: -34460 },
 	]; // For calendar- FIXME: Hard-coded for now & use "useState" later
 
+	const mainPageStyles = {
+		container: {
+			position: "absolute" as const,
+			top: 0,
+			width: "100%",
+		},
+		calendarWrapper: {
+			position: "absolute" as const,
+			top: "176px",
+			width: "100%",
+		},
+	};
+
 	return (
-		<div style={{ position: "absolute", top: 0, width: "100%" }}>
+		<div style={mainPageStyles.container}>
 			<Header
 				brand={"Wise Wallet"}
 				currentTab={currentTab}
@@ -40,7 +53,7 @@ function MainPage() {
 			/>
 			{currentTab === "records" && <div>Records tab pressed</div>}
 			{currentTab === "calendar" && (
-				<div style={{ position: "absolute", top: "176px", width: "100%" }}>
+				<div style={mainPageStyles.calendarWrapper}>
 					<Calendar
 						year={year}
 						month={month}
