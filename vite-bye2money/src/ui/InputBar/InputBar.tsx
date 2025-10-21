@@ -3,6 +3,8 @@ import styles from "./InputBar.module.css";
 
 import { ExpandMore, CheckRounded } from "@mui/icons-material";
 
+import { toKoreanDate } from "./convertDate";
+
 import Button from "../../components/Button/Button";
 import TextInput from "../../components/TextInput/TextInput";
 
@@ -24,15 +26,6 @@ export interface InputBarProps {
 	}) => void;
 }
 
-const toKoreanDate = (iso: string) => {
-	const d = new Date(iso);
-	if (Number.isNaN(d.getTime())) return iso;
-	const y = d.getFullYear();
-	const m = `${d.getMonth() + 1}`.padStart(2, "0");
-	const day = `${d.getDate()}`.padStart(2, "0");
-	return `${y}. ${m}. ${day}`;
-};
-
 const InputBar = ({
 	date,
 	amount = 0,
@@ -53,6 +46,12 @@ const InputBar = ({
 	const signedAmount = useMemo(
 		() => (isExpense ? -absAmount : absAmount),
 		[isExpense, absAmount]
+	);
+
+	const canSubmit = useMemo(
+		() =>
+			(absAmount ?? 0) > 0 || text.trim().length > 0 || !!payment || !!category,
+		[absAmount, text, payment, category]
 	);
 
 	const handleSubmit = () => {
@@ -194,7 +193,7 @@ const InputBar = ({
 					tone="default"
 					aria-label="입력 완료"
 					onClick={handleSubmit}
-					disabled={absAmount === 0 && text.trim().length === 0}
+					disabled={!canSubmit}
 				/>
 			</div>
 		</div>
