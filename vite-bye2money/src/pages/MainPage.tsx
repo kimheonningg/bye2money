@@ -1,12 +1,20 @@
-import "./styles/App.css";
+import "../styles/App.css";
 
 import { useState } from "react";
 
 import type { HeaderToolIconType } from "../types/types";
 
 import Header from "../ui/Header/Header";
+
+// records
+import InputBar from "../ui/InputBar/InputBar";
+
+// calendar
 import Calendar from "../ui/Calendar/Calendar";
 import type { MoneyEntry } from "../types/types";
+import { Input } from "@mui/material";
+
+import { toISODate } from "../utils/utils";
 
 function MainPage() {
 	const [year, setYear] = useState<number>(2025);
@@ -31,6 +39,12 @@ function MainPage() {
 			top: 0,
 			width: "100%",
 		},
+		inputBarWrapper: {
+			display: "flex",
+			justifyContent: "center",
+			width: "100%",
+			marginTop: "8px",
+		},
 		calendarWrapper: {
 			position: "absolute" as const,
 			top: "176px",
@@ -51,7 +65,15 @@ function MainPage() {
 					setMonth(newMonth);
 				}}
 			/>
-			{currentTab === "records" && <div>Records tab pressed</div>}
+			{currentTab === "records" && (
+				<div style={mainPageStyles.inputBarWrapper}>
+					<InputBar
+						date={toISODate(year, month, 24)}
+						amount={0}
+						onSubmit={(v) => console.log("입력된 데이터:", v)}
+					/>
+				</div>
+			)}
 			{currentTab === "calendar" && (
 				<div style={mainPageStyles.calendarWrapper}>
 					<Calendar

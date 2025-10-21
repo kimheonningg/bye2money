@@ -4,7 +4,7 @@
 	gap: 6px;
 	color: var(--token-neutral-text-default);
 	cursor: text;
-	width: 320px;
+	width: 100%;
 	height: 40px;
 	border-radius: 8px;
 	box-sizing: border-box;
