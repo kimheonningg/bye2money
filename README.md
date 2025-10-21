@@ -75,11 +75,11 @@ Using Material UI
   ```
 
 - For CSS files, use the defined color system as much as possible
-- Excluding `App.jsx` at `/` route, pages are named as: `<Page name>Page.tsx`
+- Pages are named as: `<Page name>Page.tsx`
 
 ## Notes
 
-- 공통 변수는 `App.tsx`에서 관리 (Provider? Maybe replace later)
+- 공통 변수는 `MainPage.tsx`에서 관리 (Provider? Maybe replace later)
 
 ## Component Testing
 
@@ -89,7 +89,7 @@ This page can be accessed by: `http://localhost:5173/component-test`
 
 ## Checklist (개발 순서)
 
-- 기본 컴포넌트 5가지 먼저 개발 (테스트는 `App.tsx`에 import하여 확인)- 큰 틀만 V
+- 기본 컴포넌트 5가지 먼저 개발 (테스트는 `MainPage.tsx`에 import하여 확인)- 큰 틀만 V
   - Figma 보면서 props 변수 정의
   - 각 변수에 따른 세부 기능들 구현
 - Figma 확인하여 컴포넌트들의 세부 디자인 디테일 구현 V
@@ -99,4 +99,4 @@ This page can be accessed by: `http://localhost:5173/component-test`
   - Header V
   - Calendar V
     - `react-day-picker` used for UI, `date-fns` used for logics (for calculating, etc)
-- `App.tsx`에서 global하게 관리하는 변수들: year, month, current tab. 각각을 각 컴포넌트의 props로 넘겨주도록
+- `MainPage.tsx`에서 global하게 관리하는 변수들: year, month, current tab. 각각을 각 컴포넌트의 props로 넘겨주도록

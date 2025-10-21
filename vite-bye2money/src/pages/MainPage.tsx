@@ -2,13 +2,13 @@ import "./styles/App.css";
 
 import { useState } from "react";
 
-import type { HeaderToolIconType } from "./types/types";
+import type { HeaderToolIconType } from "../types/types";
 
-import Header from "./ui/Header/Header";
-import Calendar from "./ui/Calendar/Calendar";
-import type { MoneyEntry } from "./types/types";
+import Header from "../ui/Header/Header";
+import Calendar from "../ui/Calendar/Calendar";
+import type { MoneyEntry } from "../types/types";
 
-function App() {
+function MainPage() {
 	const [year, setYear] = useState<number>(2025);
 	const [month, setMonth] = useState<number>(10);
 
@@ -54,4 +54,4 @@ function App() {
 	);
 }
 
-export default App;
+export default MainPage;
