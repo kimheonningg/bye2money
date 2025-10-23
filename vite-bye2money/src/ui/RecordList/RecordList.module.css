@@ -18,12 +18,22 @@
 	font-weight: 400;
 }
 
-.total {
+.totals {
+	display: flex;
+	align-items: center;
+	gap: 8px;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 16px;
 	letter-spacing: 0;
 	color: var(--token-neutral-text-default);
+}
+
+.totalLabel {
+}
+
+.totalValue {
+	text-align: right;
 }
 
 .items {
