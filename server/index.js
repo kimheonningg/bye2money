@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 
-import { version } from "./data.js";
+import { version, MOCK_RECORD_ITEMS } from "./data.js";
 
 const app = express();
 const PORT = 3000;
@@ -15,6 +15,11 @@ const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 app.get("/test/version", async (req, res) => {
 	await delay(1000);
 	res.json({ version: version });
+});
+
+app.get("/records", async (req, res) => {
+	await delay(1000);
+	res.json(MOCK_RECORD_ITEMS);
 });
 
 app.listen(PORT, () => {

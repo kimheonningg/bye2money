@@ -1,6 +1,6 @@
 import "../styles/App.css";
 
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import type { CSSProperties } from "react";
 
 import { HeaderToolIconType } from "../types/types";
@@ -12,6 +12,9 @@ import InputBar from "../ui/InputBar/InputBar";
 import MonthlyInfo from "../ui/MonthlyInfo/MonthlyInfo";
 import { MOCK_MONTHLY_GROUP } from "../ui/RecordList/mock_data";
 import RecordList from "../ui/RecordList/RecordList";
+
+import { fetchRecords } from "../utils/api/recordDataApi";
+import { toMonthlyGroup, toCalendarEntries } from "../utils/utils";
 
 // calendar
 import Calendar from "../ui/Calendar/Calendar";
@@ -25,6 +28,28 @@ function MainPage() {
 
 	const [currentTab, setCurrentTab] = useState<HeaderToolIconType>(
 		HeaderToolIconType.Records
+	);
+
+	const [records, setRecords] = useState<any[]>([]); // FIXME: specify type
+
+	const load = async () => {
+		try {
+			const data = await fetchRecords();
+			setRecords(data);
+		} catch {}
+	};
+
+	useEffect(() => {
+		load();
+	}, []);
+
+	const monthly = useMemo(
+		() => toMonthlyGroup(records, year, month),
+		[records, year, month]
+	);
+	const calendarEntries: MoneyEntry[] = useMemo(
+		() => toCalendarEntries(records, year, month),
+		[records, year, month]
 	);
 
 	const dataContent: MoneyEntry[] = [
@@ -89,8 +114,8 @@ function MainPage() {
 						/>
 					</div>
 					<div style={mainPageStyles.recordListWrapper}>
-						<MonthlyInfo monthly={MOCK_MONTHLY_GROUP} />
-						{MOCK_MONTHLY_GROUP.groups.map((g) => (
+						<MonthlyInfo monthly={monthly} />
+						{monthly.groups.map((g) => (
 							<RecordList key={g.date} group={g} />
 						))}
 					</div>
