@@ -30,7 +30,7 @@ export default function PaymentSelectPanel({
 
 	const rootRef = useRef<HTMLDivElement>(null);
 
-	const display = value ?? options[0] ?? "";
+	const display = value ?? "";
 
 	const items = useMemo(
 		() => options.map((label, idx) => ({ label, idx })),
@@ -95,8 +95,7 @@ export default function PaymentSelectPanel({
 		setOptions((prev) => prev.filter((_, i) => i !== idx));
 
 		if (!value && removed === display) {
-			const next = options.find((_, i) => i !== idx);
-			if (next) onChange?.(next);
+			onChange?.("");
 		}
 		setHighlight(0);
 	};
@@ -114,6 +113,8 @@ export default function PaymentSelectPanel({
 		setOpen(false);
 	};
 
+	const hasValue = !!display;
+
 	return (
 		<div
 			ref={rootRef}
@@ -124,12 +125,13 @@ export default function PaymentSelectPanel({
 			<button
 				type="button"
 				className={styles.trigger}
+				data-has-value={hasValue ? "" : undefined}
 				disabled={disabled}
 				aria-haspopup="listbox"
 				aria-expanded={open}
 				onClick={() => !disabled && setOpen((v) => !v)}
 			>
-				<span className={styles.triggerText}>{display || "결제수단 선택"}</span>
+				<span className={styles.triggerText}>{display || "선택하세요"}</span>
 				<ExpandMore className={styles.chevron} />
 			</button>
 
