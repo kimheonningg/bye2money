@@ -9,13 +9,13 @@ import Header from "../ui/Header/Header";
 
 // records
 import InputBar from "../ui/InputBar/InputBar";
+import MonthlyInfo from "../ui/MonthlyInfo/MonthlyInfo";
 import { MOCK_MONTHLY_GROUP } from "../ui/RecordList/mock_data";
 import RecordList from "../ui/RecordList/RecordList";
 
 // calendar
 import Calendar from "../ui/Calendar/Calendar";
 import type { MoneyEntry } from "../types/types";
-import { Input } from "@mui/material";
 
 import { toISODate } from "../utils/utils";
 
@@ -87,6 +87,7 @@ function MainPage() {
 						/>
 					</div>
 					<div style={mainPageStyles.recordListWrapper}>
+						<MonthlyInfo monthly={MOCK_MONTHLY_GROUP} />
 						{MOCK_MONTHLY_GROUP.groups.map((g) => (
 							<RecordList key={g.date} group={g} />
 						))}
