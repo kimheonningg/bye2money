@@ -80,18 +80,18 @@ const Modal = ({
 		>
 			<div className={styles.backdrop} onClick={handleBackdrop} />
 			<div className={styles.panel} ref={panelRef}>
-				{title ? (
+				{title && (
 					<div className={styles.header}>
 						<h2 id={`${dialogId}-title`} className={styles.title}>
 							{title}
 						</h2>
 					</div>
-				) : null}
+				)}
 
 				<div className={styles.body}>{children}</div>
 
 				<div className={styles.footer}>
-					{footer ?? (
+					{!footer && (
 						<>
 							<Button
 								buttonType="outline"
