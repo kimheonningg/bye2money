@@ -16,6 +16,7 @@
 	width: 0.5px;
 	height: 44px;
 	background: var(--token-neutral-text-default);
+	align-self: center;
 }
 
 .label {
@@ -31,6 +32,26 @@
 /* Text input */
 .textInputWrap {
 	width: 100%;
+}
+
+/* 디자인 통일을 위해 */
+.cellDate,
+.cellAmount,
+.cellContent,
+.cellSelect {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 8px;
+}
+
+.cellDate .dateValue,
+.cellAmount .amountBox,
+.cellContent .textInputWrap,
+.cellSelect .selectLike {
+	height: 32px;
+	display: flex;
+	align-items: center;
 }
 
 /* 일자 */
