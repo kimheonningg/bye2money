@@ -1,6 +1,7 @@
 import "../styles/App.css";
 
 import { useState } from "react";
+import type { CSSProperties } from "react";
 
 import type { HeaderToolIconType } from "../types/types";
 
@@ -8,6 +9,8 @@ import Header from "../ui/Header/Header";
 
 // records
 import InputBar from "../ui/InputBar/InputBar";
+import { MOCK_MONTHLY_GROUP } from "../ui/RecordList/mock_data";
+import RecordList from "../ui/RecordList/RecordList";
 
 // calendar
 import Calendar from "../ui/Calendar/Calendar";
@@ -38,18 +41,27 @@ function MainPage() {
 			position: "absolute" as const,
 			top: 0,
 			width: "100%",
-		},
+			display: "flex",
+			flexDirection: "column",
+			alignItems: "center",
+		} satisfies CSSProperties,
 		inputBarWrapper: {
 			display: "flex",
+			flexDirection: "column",
 			justifyContent: "center",
 			width: "100%",
+			alignItems: "center",
 			marginTop: "8px",
-		},
+		} satisfies CSSProperties,
+		recordListWrapper: {
+			marginTop: "40px",
+			width: "846px",
+		} satisfies CSSProperties,
 		calendarWrapper: {
 			position: "absolute" as const,
 			top: "176px",
 			width: "100%",
-		},
+		} satisfies CSSProperties,
 	};
 
 	return (
@@ -66,13 +78,20 @@ function MainPage() {
 				}}
 			/>
 			{currentTab === "records" && (
-				<div style={mainPageStyles.inputBarWrapper}>
-					<InputBar
-						date={toISODate(year, month, 24)}
-						amount={0}
-						onSubmit={(v) => console.log("입력된 데이터:", v)}
-					/>
-				</div>
+				<>
+					<div style={mainPageStyles.inputBarWrapper}>
+						<InputBar
+							date={toISODate(year, month, 24)}
+							amount={0}
+							onSubmit={(v) => console.log("입력된 데이터:", v)}
+						/>
+					</div>
+					<div style={mainPageStyles.recordListWrapper}>
+						{MOCK_MONTHLY_GROUP.groups.map((g) => (
+							<RecordList key={g.date} group={g} />
+						))}
+					</div>
+				</>
 			)}
 			{currentTab === "calendar" && (
 				<div style={mainPageStyles.calendarWrapper}>
