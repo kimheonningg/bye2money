@@ -8,6 +8,8 @@ import { toKoreanDate } from "./convertDate";
 import Button from "../../components/Button/Button";
 import TextInput from "../../components/TextInput/TextInput";
 
+import PaymentSelectPanel from "../PaymentSelectPanel/PaymentSelectPanel";
+
 import { DEFAULT_PAYMENT_OPTIONS } from "./const";
 import { CATEGORY_TAG_LABELS } from "../../components/CategoryTag/const";
 import type { CategoryTagTone } from "../../types/types";
@@ -138,22 +140,10 @@ const InputBar = ({
 			<div className={styles.cellSelect}>
 				<div className={styles.label}>결제수단</div>
 				<div className={styles.selectLike}>
-					<select
-						aria-label="결제수단"
-						className={styles.select}
-						value={payment ?? ""}
-						onChange={(e) => setPayment(e.target.value || null)}
-					>
-						<option className={styles.dropDownPlaceholder} value="" disabled>
-							선택하세요
-						</option>
-						{paymentOptions.map((opt) => (
-							<option key={opt} value={opt}>
-								{opt}
-							</option>
-						))}
-					</select>
-					<ExpandMore className={styles.chevron} />
+					<PaymentSelectPanel
+						value={payment ?? undefined}
+						onChange={(v) => setPayment(v)}
+					/>
 				</div>
 			</div>
 
