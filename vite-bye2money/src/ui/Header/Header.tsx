@@ -7,7 +7,7 @@ import {
 	BarChartOutlined,
 } from "@mui/icons-material";
 
-import type { HeaderToolIconType } from "../../types/types";
+import { HeaderToolIconType } from "../../types/types";
 
 import { MONTHS } from "./const";
 import { stepMonth } from "./monthNav";
@@ -29,7 +29,6 @@ const Header = ({
 	month,
 	onChangeMonth,
 }: HeaderProps) => {
-	const [activeTool, setActiveTool] = useState<HeaderToolIconType>("records");
 	const [currentYear, setCurrentYear] = useState<number>(year);
 	const [currentMonth, setCurrentMonth] = useState<number>(month);
 	const [currentLabel, setCurrentLabel] = useState<string>(
@@ -108,7 +107,7 @@ const Header = ({
 						aria-label="records"
 						aria-pressed={currentTab === "records"}
 						data-active={currentTab === "records"}
-						onClick={() => setCurrentTab("records")}
+						onClick={() => setCurrentTab(HeaderToolIconType.Records)}
 					>
 						<DescriptionOutlined className={styles.icon} />
 					</button>
@@ -117,7 +116,7 @@ const Header = ({
 						aria-label="calendar"
 						aria-pressed={currentTab === "calendar"}
 						data-active={currentTab === "calendar"}
-						onClick={() => setCurrentTab("calendar")}
+						onClick={() => setCurrentTab(HeaderToolIconType.Calendar)}
 					>
 						<CalendarMonthOutlined className={styles.icon} />
 					</button>
@@ -126,7 +125,7 @@ const Header = ({
 						aria-label="analytics"
 						aria-pressed={currentTab === "analytics"}
 						data-active={currentTab === "analytics"}
-						onClick={() => setCurrentTab("analytics")}
+						onClick={() => setCurrentTab(HeaderToolIconType.Analytics)}
 					>
 						<BarChartOutlined className={styles.icon} />
 					</button>

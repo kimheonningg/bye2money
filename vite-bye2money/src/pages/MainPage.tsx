@@ -3,7 +3,7 @@ import "../styles/App.css";
 import { useState } from "react";
 import type { CSSProperties } from "react";
 
-import type { HeaderToolIconType } from "../types/types";
+import { HeaderToolIconType } from "../types/types";
 
 import Header from "../ui/Header/Header";
 
@@ -23,7 +23,9 @@ function MainPage() {
 	const [year, setYear] = useState<number>(2025);
 	const [month, setMonth] = useState<number>(10);
 
-	const [currentTab, setCurrentTab] = useState<HeaderToolIconType>("records");
+	const [currentTab, setCurrentTab] = useState<HeaderToolIconType>(
+		HeaderToolIconType.Records
+	);
 
 	const dataContent: MoneyEntry[] = [
 		{ date: "2025-10-02", amount: -5400 },

@@ -1,4 +1,8 @@
-export type HeaderToolIconType = "records" | "calendar" | "analytics";
+export enum HeaderToolIconType {
+	Records = "records",
+	Calendar = "calendar",
+	Analytics = "analytics",
+}
 
 export type MoneyEntry = {
 	date: string; // "YYYY-MM-DD"
