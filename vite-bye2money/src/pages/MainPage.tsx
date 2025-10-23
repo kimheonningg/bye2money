@@ -83,7 +83,7 @@ function MainPage() {
 				<>
 					<div style={mainPageStyles.inputBarWrapper}>
 						<InputBar
-							date={toISODate(year, month, 24)}
+							date={toISODate(2025, 10, 24)}
 							amount={0}
 							onSubmit={(v) => console.log("입력된 데이터:", v)}
 						/>

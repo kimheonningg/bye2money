@@ -80,6 +80,7 @@ Using Material UI
 ## Notes
 
 - 공통 변수는 `MainPage.tsx`에서 관리 (Provider? Maybe replace later)
+- `InputBar` component는 global한 `year`, `month`와 연동되지 않도록
 
 ## Component Testing
 

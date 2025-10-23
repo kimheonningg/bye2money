@@ -8,6 +8,7 @@ export type TextInputTypingStates =
 	| "onFocus"
 	| "typing"
 	| "typed";
+export type TextInputTextAlignType = "left" | "center" | "right";
 
 export interface TextInputProps
 	extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "className"> {
@@ -19,6 +20,7 @@ export interface TextInputProps
 	onValueChange?: (value: string) => void;
 	value?: string;
 	forceTypingState?: TextInputTypingStates;
+	textAlign?: TextInputTextAlignType;
 }
 
 const TextInput = ({
@@ -35,6 +37,7 @@ const TextInput = ({
 	onFocus,
 	onBlur,
 	forceTypingState,
+	textAlign = "left",
 	id,
 	...rest
 }: TextInputProps) => {
@@ -111,6 +114,9 @@ const TextInput = ({
 		...(isControlled ? {} : { defaultValue }),
 		"aria-invalid": error || undefined,
 		"aria-disabled": disabled || undefined,
+		style: {
+			textAlign,
+		},
 	};
 
 	return (

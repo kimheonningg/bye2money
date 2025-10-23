@@ -3,14 +3,11 @@ import styles from "./InputBar.module.css";
 
 import { ExpandMore, CheckRounded } from "@mui/icons-material";
 
-import { toKoreanDate } from "./convertDate";
-
 import Button from "../../components/Button/Button";
 import TextInput from "../../components/TextInput/TextInput";
 
 import PaymentSelectPanel from "../PaymentSelectPanel/PaymentSelectPanel";
 
-import { DEFAULT_PAYMENT_OPTIONS } from "./const";
 import { CATEGORY_TAG_LABELS } from "../../components/CategoryTag/const";
 import type { CategoryTagTone } from "../../types/types";
 
@@ -35,15 +32,32 @@ const InputBar = ({
 	maxContentLen = 32,
 	onSubmit,
 }: InputBarProps) => {
+	const [inputYear, setInputYear] = useState(
+		() => Number(date.slice(0, 4)) || 2025
+	);
+	const [inputMonth, setInputMonth] = useState(
+		() => Number(date.slice(5, 7)) || 1
+	);
+	const [inputDay, setInputDay] = useState(
+		() => Number(date.slice(8, 10)) || 1
+	);
+
 	const [isExpense, setIsExpense] = useState(amount <= 0);
 	const [absAmount, setAbsAmount] = useState(Math.abs(amount) || 0);
 	const [text, setText] = useState(content);
 	const [payment, setPayment] = useState<string | null>(null);
 	const [category, setCategory] = useState<CategoryTagTone | null>(null);
 
-	const [paymentOptions, setPaymentOptions] = useState<string[]>(
-		DEFAULT_PAYMENT_OPTIONS
-	); // TODO - payment options can be modified
+	const clamp = (v: number, min: number, max: number) =>
+		Math.min(max, Math.max(min, v));
+	const to2 = (n: number) => String(n).padStart(2, "0");
+
+	const localDate = useMemo(() => {
+		const y = clamp(inputYear || 2000, 2000, 2025);
+		const m = clamp(inputMonth || 1, 1, 12);
+		const d = clamp(inputDay || 1, 1, 24);
+		return `${y}-${to2(m)}-${to2(d)}`;
+	}, [inputYear, inputMonth, inputDay]);
 
 	const signedAmount = useMemo(
 		() => (isExpense ? -absAmount : absAmount),
@@ -58,7 +72,7 @@ const InputBar = ({
 
 	const handleSubmit = () => {
 		onSubmit?.({
-			date,
+			date: localDate,
 			amount: signedAmount,
 			content: text.trim(),
 			payment,
@@ -71,7 +85,63 @@ const InputBar = ({
 			{/* 날짜 */}
 			<div className={styles.cellDate}>
 				<div className={styles.label}>일자</div>
-				<div className={styles.dateValue}>{toKoreanDate(date)}</div>
+				<div className={styles.dateInputs}>
+					<div className={styles.dateField}>
+						<TextInput
+							inputType="default"
+							aria-label="년"
+							inputMode="numeric"
+							placeholder="YYYY"
+							value={String(inputYear || "")}
+							maxLength={4}
+							onValueChange={(v) => {
+								const n = Number((v ?? "").replace(/[^0-9]/g, ""));
+								if (Number.isNaN(n)) return setInputYear(2000);
+								setInputYear(clamp(n, 2000, 2025));
+							}}
+							onBlur={() => setInputYear((y) => clamp(y || 2000, 2000, 2025))}
+							textAlign="center"
+						/>
+					</div>
+					<span className={styles.dot}>.</span>
+
+					<div className={styles.dateFieldNarrow}>
+						<TextInput
+							inputType="default"
+							aria-label="월"
+							inputMode="numeric"
+							placeholder="MM"
+							value={String(inputMonth || "")}
+							maxLength={2}
+							onValueChange={(v) => {
+								const n = Number((v ?? "").replace(/[^0-9]/g, ""));
+								if (Number.isNaN(n)) return setInputMonth(1);
+								setInputMonth(clamp(n, 1, 12));
+							}}
+							onBlur={() => setInputMonth((m) => clamp(m || 1, 1, 12))}
+							textAlign="center"
+						/>
+					</div>
+					<span className={styles.dot}>.</span>
+
+					<div className={styles.dateFieldNarrow}>
+						<TextInput
+							inputType="default"
+							aria-label="일"
+							inputMode="numeric"
+							placeholder="DD"
+							value={String(inputDay || "")}
+							maxLength={2}
+							onValueChange={(v) => {
+								const n = Number((v ?? "").replace(/[^0-9]/g, ""));
+								if (Number.isNaN(n)) return setInputDay(1);
+								setInputDay(clamp(n, 1, 24));
+							}}
+							onBlur={() => setInputDay((d) => clamp(d || 1, 1, 24))}
+							textAlign="center"
+						/>
+					</div>
+				</div>
 			</div>
 
 			<div className={styles.vrule} aria-hidden />
@@ -104,6 +174,7 @@ const InputBar = ({
 								const raw = (next ?? "").replace(/[^0-9]/g, "");
 								setAbsAmount(raw ? Number(raw) : 0);
 							}}
+							textAlign="right"
 						/>
 					</div>
 
