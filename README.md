@@ -81,6 +81,7 @@ Using Material UI
 
 - 공통 변수는 `MainPage.tsx`에서 관리 (Provider? Maybe replace later)
 - `InputBar` component는 global한 `year`, `month`와 연동되지 않도록
+- 가계부에 입력할 수 있는 기간은 2000-2025년
 
 ## Component Testing
 

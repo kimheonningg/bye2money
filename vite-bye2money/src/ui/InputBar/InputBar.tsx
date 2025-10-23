@@ -48,16 +48,7 @@ const InputBar = ({
 	const [payment, setPayment] = useState<string | null>(null);
 	const [category, setCategory] = useState<CategoryTagTone | null>(null);
 
-	const clamp = (v: number, min: number, max: number) =>
-		Math.min(max, Math.max(min, v));
 	const to2 = (n: number) => String(n).padStart(2, "0");
-
-	const localDate = useMemo(() => {
-		const y = clamp(inputYear || 2000, 2000, 2025);
-		const m = clamp(inputMonth || 1, 1, 12);
-		const d = clamp(inputDay || 1, 1, 24);
-		return `${y}-${to2(m)}-${to2(d)}`;
-	}, [inputYear, inputMonth, inputDay]);
 
 	const signedAmount = useMemo(
 		() => (isExpense ? -absAmount : absAmount),
@@ -66,13 +57,27 @@ const InputBar = ({
 
 	const canSubmit = useMemo(
 		() =>
-			(absAmount ?? 0) > 0 || text.trim().length > 0 || !!payment || !!category,
+			(absAmount ?? 0) > 0 && text.trim().length > 0 && !!payment && !!category,
 		[absAmount, text, payment, category]
 	);
 
 	const handleSubmit = () => {
+		// Check if entered YYMMDD is valid.
+		// Ignore if invalid date is entered.
+
+		if (
+			!(inputYear >= 2000 && inputYear <= 2025) ||
+			!(inputMonth >= 1 && inputMonth <= 12) ||
+			!(inputDay >= 1 && inputDay <= 24) //
+		) {
+			// Invalid date
+			return;
+		}
+
+		const validDate = `${inputYear}-${to2(inputMonth)}-${to2(inputDay)}`;
+
 		onSubmit?.({
-			date: localDate,
+			date: validDate,
 			amount: signedAmount,
 			content: text.trim(),
 			payment,
@@ -96,10 +101,9 @@ const InputBar = ({
 							maxLength={4}
 							onValueChange={(v) => {
 								const n = Number((v ?? "").replace(/[^0-9]/g, ""));
-								if (Number.isNaN(n)) return setInputYear(2000);
-								setInputYear(clamp(n, 2000, 2025));
+								if (Number.isNaN(n)) return;
+								setInputYear(n);
 							}}
-							onBlur={() => setInputYear((y) => clamp(y || 2000, 2000, 2025))}
 							textAlign="center"
 						/>
 					</div>
@@ -115,10 +119,9 @@ const InputBar = ({
 							maxLength={2}
 							onValueChange={(v) => {
 								const n = Number((v ?? "").replace(/[^0-9]/g, ""));
-								if (Number.isNaN(n)) return setInputMonth(1);
-								setInputMonth(clamp(n, 1, 12));
+								if (Number.isNaN(n)) return;
+								setInputMonth(n);
 							}}
-							onBlur={() => setInputMonth((m) => clamp(m || 1, 1, 12))}
 							textAlign="center"
 						/>
 					</div>
@@ -134,10 +137,9 @@ const InputBar = ({
 							maxLength={2}
 							onValueChange={(v) => {
 								const n = Number((v ?? "").replace(/[^0-9]/g, ""));
-								if (Number.isNaN(n)) return setInputDay(1);
-								setInputDay(clamp(n, 1, 24));
+								if (Number.isNaN(n)) return;
+								setInputDay(n);
 							}}
-							onBlur={() => setInputDay((d) => clamp(d || 1, 1, 24))}
 							textAlign="center"
 						/>
 					</div>
