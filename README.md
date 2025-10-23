@@ -4,6 +4,8 @@
 
 ## How to run this project
 
+### Vite Frontend
+
 ```bash
 # move to the project directory
 cd vite-bye2money
@@ -16,6 +18,19 @@ npm run dev
 ```
 
 This project will open at `http://localhost:5173`
+
+### Express Backend
+
+```bash
+# move to the server directory
+cd server
+
+# install dependecies if needed
+npm install
+
+# run this project
+npm run dev
+```
 
 ## Project Structure
 
@@ -102,3 +117,5 @@ This page can be accessed by: `http://localhost:5173/component-test`
   - Calendar V
     - `react-day-picker` used for UI, `date-fns` used for logics (for calculating, etc)
 - `MainPage.tsx`에서 global하게 관리하는 변수들: year, month, current tab. 각각을 각 컴포넌트의 props로 넘겨주도록
+
+- Express Backend 생성
