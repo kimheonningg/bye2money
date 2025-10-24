@@ -1,4 +1,5 @@
 import React, { useEffect, useId, useRef } from "react";
+import classNames from "classnames";
 import styles from "./Modal.module.css";
 import Button from "../Button/Button";
 
@@ -57,17 +58,10 @@ const Modal = ({
 		};
 	}, [open, closeOnEsc, onClose]);
 
-	const classes = [
-		styles.root,
-		styles[`type_${type}`],
-		open ? styles.state_open : styles.state_closed,
-	]
-		.filter(Boolean)
-		.join(" ");
-
-	const handleBackdrop = () => {
-		if (closeOnBackdrop) onClose?.();
-	};
+	const classes = classNames(styles.root, styles[`type_${type}`], {
+		[styles.state_open]: open,
+		[styles.state_closed]: !open,
+	});
 
 	return (
 		<div
@@ -78,7 +72,12 @@ const Modal = ({
 			style={{ display: open ? "grid" : "none" }}
 			{...rest}
 		>
-			<div className={styles.backdrop} onClick={handleBackdrop} />
+			<div
+				className={styles.backdrop}
+				onClick={() => {
+					if (closeOnBackdrop) onClose?.();
+				}}
+			/>
 			<div className={styles.panel} ref={panelRef}>
 				{title && (
 					<div className={styles.header}>
