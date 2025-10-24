@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import styles from "./Header.module.css";
 
 import {
@@ -41,7 +41,7 @@ const Header = ({
 		setCurrentLabel(MONTHS[month - 1].label);
 	}, [year, month]);
 
-	const handlePrev = () => {
+	const handlePrev = useCallback(() => {
 		// Go to previous month
 		const {
 			year: newYear,
@@ -52,9 +52,9 @@ const Header = ({
 		setCurrentMonth(newMonth);
 		setCurrentLabel(newLabel);
 		onChangeMonth(newYear, newMonth);
-	};
+	}, [currentYear, currentMonth, onChangeMonth]);
 
-	const handleNext = () => {
+	const handleNext = useCallback(() => {
 		// Go to next month
 		const {
 			year: newYear,
@@ -64,9 +64,8 @@ const Header = ({
 		setCurrentYear(newYear);
 		setCurrentMonth(newMonth);
 		setCurrentLabel(newLabel);
-
 		onChangeMonth(newYear, newMonth);
-	};
+	}, [currentYear, currentMonth, onChangeMonth]);
 
 	return (
 		<header className={styles.appbar}>
