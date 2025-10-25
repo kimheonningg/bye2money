@@ -19,6 +19,7 @@ import { toMonthlyGroup } from "../utils/utils";
 import Calendar from "../ui/Calendar/Calendar";
 import type { MoneyEntry } from "../types/types";
 import { toCalendarEntries } from "../utils/utils";
+import CalendarCaption from "../ui/CalendarCaption/CalendarCaption";
 
 import { toISODate } from "../utils/utils";
 
@@ -123,6 +124,7 @@ function MainPage() {
 						entries={calendarEntries}
 						selectedDate={todayDateISO}
 					/>
+					<CalendarCaption monthly={monthly} />
 				</div>
 			)}
 			{currentTab === "analytics" && <div>Analytics tab pressed</div>}
