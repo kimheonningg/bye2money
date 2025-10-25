@@ -117,7 +117,7 @@ This page can be accessed by: `http://localhost:5173/component-test`
 
 ## Checklist (개발 순서)
 
-### 1주차
+### 첫 주 (6주차)
 
 - 공통 컴포넌트 5개 개발 완료: `/components-test` 페이지를 만들어, 테스트 진행하였음
 - Routing은 `react-dom` 설치하여 구현하였음. Page가 늘어날 것 같지는 않지만, `/pages` directory도 생성함.
@@ -128,7 +128,7 @@ This page can be accessed by: `http://localhost:5173/component-test`
 - Calendar는 `react-day-picker` 사용하여 UI를 간단히 구현하였고, 날짜 관련 utility 등은 `date-fns`와 ~~약간의 AI의 도움을 받아~~ 구현
 - Material UI 사용
 
-### 2주차
+### 둘째 주 (7주차)
 
 - Records page 모두 구현 완료
   - InputBar component 구현 완료
@@ -146,3 +146,15 @@ This page can be accessed by: `http://localhost:5173/component-test`
   - Calendar에서 선택된 날짜는 오늘 날짜
 - 필요한 Backend API 구현 완료 (Express server 사용) 및 Frontend와 연결 완료
   - Frontend에서 api 연결하는 부분은 `utils/api/`에 구현
+
+## Completed Screen Overview
+
+2025/10/25 스크린샷
+
+### Records
+
+![RecordsMainPage](./assets/RecordsMainPage.png)
+
+### Calendar
+
+![CalendarMainPage](./assets/CalendarMainPage.png)
