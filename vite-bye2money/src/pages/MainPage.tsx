@@ -10,7 +10,6 @@ import Header from "../ui/Header/Header";
 // records
 import InputBar from "../ui/InputBar/InputBar";
 import MonthlyInfo from "../ui/MonthlyInfo/MonthlyInfo";
-import { MOCK_MONTHLY_GROUP } from "../ui/RecordList/mock_data";
 import RecordList from "../ui/RecordList/RecordList";
 
 import { fetchRecords } from "../utils/api/recordDataApi";
@@ -41,6 +40,11 @@ function MainPage() {
 
 	useEffect(() => {
 		load();
+	}, []);
+
+	const todayDateISO = useMemo(() => {
+		const now = new Date();
+		return toISODate(now.getFullYear(), now.getMonth() + 1, now.getDate());
 	}, []);
 
 	const monthly = useMemo(
@@ -108,7 +112,7 @@ function MainPage() {
 				<>
 					<div style={mainPageStyles.inputBarWrapper}>
 						<InputBar
-							date={toISODate(2025, 10, 24)}
+							date={todayDateISO}
 							amount={0}
 							onSubmit={(v) => console.log("입력된 데이터:", v)}
 						/>
@@ -127,7 +131,7 @@ function MainPage() {
 						year={year}
 						month={month}
 						entries={dataContent}
-						selectedDate="2025-10-17"
+						selectedDate={todayDateISO}
 					/>
 				</div>
 			)}
