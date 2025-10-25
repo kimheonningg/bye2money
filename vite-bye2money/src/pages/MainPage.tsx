@@ -24,8 +24,9 @@ import CalendarCaption from "../ui/CalendarCaption/CalendarCaption";
 import { toISODate } from "../utils/utils";
 
 function MainPage() {
-	const [year, setYear] = useState<number>(2025);
-	const [month, setMonth] = useState<number>(10);
+	const now = new Date();
+	const [year, setYear] = useState<number>(now.getFullYear());
+	const [month, setMonth] = useState<number>(now.getMonth() + 1);
 
 	const [currentTab, setCurrentTab] = useState<HeaderToolIconType>(
 		HeaderToolIconType.Records
@@ -45,7 +46,6 @@ function MainPage() {
 	}, []);
 
 	const todayDateISO = useMemo(() => {
-		const now = new Date();
 		return toISODate(now.getFullYear(), now.getMonth() + 1, now.getDate());
 	}, []);
 
