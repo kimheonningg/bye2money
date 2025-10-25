@@ -13,11 +13,12 @@ import MonthlyInfo from "../ui/MonthlyInfo/MonthlyInfo";
 import RecordList from "../ui/RecordList/RecordList";
 
 import { fetchRecords } from "../utils/api/recordDataApi";
-import { toMonthlyGroup, toCalendarEntries } from "../utils/utils";
+import { toMonthlyGroup } from "../utils/utils";
 
 // calendar
 import Calendar from "../ui/Calendar/Calendar";
 import type { MoneyEntry } from "../types/types";
+import { toCalendarEntries } from "../utils/utils";
 
 import { toISODate } from "../utils/utils";
 
@@ -55,17 +56,6 @@ function MainPage() {
 		() => toCalendarEntries(records, year, month),
 		[records, year, month]
 	);
-
-	const dataContent: MoneyEntry[] = [
-		{ date: "2025-10-02", amount: -5400 },
-		{ date: "2025-10-03", amount: -132000 },
-		{ date: "2025-10-06", amount: -10000 },
-		{ date: "2025-10-08", amount: -529140 },
-		{ date: "2025-10-10", amount: 2010580 },
-		{ date: "2025-10-10", amount: -9500 },
-		{ date: "2025-10-14", amount: -56240 },
-		{ date: "2025-10-17", amount: -34460 },
-	]; // For calendar- FIXME: Hard-coded for now & use "useState" later
 
 	const mainPageStyles = {
 		container: {
@@ -130,7 +120,7 @@ function MainPage() {
 					<Calendar
 						year={year}
 						month={month}
-						entries={dataContent}
+						entries={calendarEntries}
 						selectedDate={todayDateISO}
 					/>
 				</div>
