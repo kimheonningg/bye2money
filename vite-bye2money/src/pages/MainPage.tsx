@@ -102,11 +102,7 @@ function MainPage() {
 			{currentTab === "records" && (
 				<>
 					<div style={mainPageStyles.inputBarWrapper}>
-						<InputBar
-							date={todayDateISO}
-							amount={0}
-							onSubmit={(v) => console.log("입력된 데이터:", v)}
-						/>
+						<InputBar date={todayDateISO} amount={0} />
 					</div>
 					<div style={mainPageStyles.recordListWrapper}>
 						<MonthlyInfo monthly={monthly} />
