@@ -32,10 +32,11 @@ npm install
 npm run dev
 ```
 
+This project will open at `http://localhost:3000`
+
 ## Project Structure
 
 - `src`
-  - `assets`
   - `components`
     - `Button`
     - `CategoryTag`
@@ -43,14 +44,25 @@ npm run dev
     - `Modal`
     - `TextInput`
   - `constants`
-  - `hooks`
+    - `api.ts`: API port, endpoint, etc are defined here
   - `pages`
+    - `ComponentTestPage.tsx`
+    - `MainPage.tsx`
   - `styles`
+    - `colors.css`: The color system is defined here
   - `types`
+    - `types.ts`: All shared types are defined here
   - `ui`
     - `Calendar`
+    - `CalendarCaption`
     - `Header`
+    - `InputBar`
+    - `MonthlyInfo`
+    - `PaymentSelectPanel`
+    - `RecordList`
   - `utils`
+    - `api`: All API call functions are defined here
+    - `utils.ts`: All other (shared) utility functions are defined here
 
 * `components` directory contains reusable common components, and `ui` directory contains larger, feature-specific ui components for the main page.
 
@@ -96,7 +108,6 @@ Using Material UI
 
 - 공통 변수는 `MainPage.tsx`에서 관리 (Provider? Maybe replace later)
 - `InputBar` component는 global한 `year`, `month`와 연동되지 않도록
-- 가계부에 입력할 수 있는 기간은 2000-2025년
 
 ## Component Testing
 
