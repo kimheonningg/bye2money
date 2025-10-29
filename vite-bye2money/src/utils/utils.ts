@@ -10,6 +10,8 @@ export const toISODate = (y: number, m: number, d: number) =>
 
 export const formatKRW = (n: number) => n.toLocaleString("ko-KR");
 
+export const formatPercent = (p: number) => `${Math.round(p)}%`;
+
 // MainPage의 전체내역 계산 용
 export function computeMonthlySummary(monthly: MonthlyRecordGroup) {
 	let income = 0;

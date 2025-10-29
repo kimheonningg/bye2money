@@ -21,6 +21,9 @@ import type { MoneyEntry } from "../types/types";
 import { toCalendarEntries } from "../utils/utils";
 import CalendarCaption from "../ui/CalendarCaption/CalendarCaption";
 
+// analytics
+import PieChartBoard from "../ui/PieChartBoard/PieChartBoard";
+
 import { toISODate } from "../utils/utils";
 
 function MainPage() {
@@ -84,6 +87,13 @@ function MainPage() {
 			top: "176px",
 			width: "100%",
 		} satisfies CSSProperties,
+		analyticsWrapper: {
+			width: "846px",
+			display: "flex",
+			justifyContent: "center",
+			position: "absolute" as const,
+			top: "176px",
+		} satisfies CSSProperties,
 	};
 
 	return (
@@ -123,7 +133,11 @@ function MainPage() {
 					<CalendarCaption monthly={monthly} />
 				</div>
 			)}
-			{currentTab === "analytics" && <div>Analytics tab pressed</div>}
+			{currentTab === "analytics" && (
+				<div style={mainPageStyles.analyticsWrapper}>
+					<PieChartBoard monthly={monthly} />
+				</div>
+			)}
 		</div>
 	);
 }
