@@ -158,3 +158,7 @@ This page can be accessed by: `http://localhost:5173/component-test`
 ### Calendar
 
 ![CalendarMainPage](./assets/CalendarMainPage.png)
+
+### Analytics
+
+![AnalyticsMainPage](./assets/AnalyticsMainPage.png)
