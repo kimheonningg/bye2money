@@ -85,17 +85,17 @@ Using Material UI
 
   ```tsx
   export interface ComponentProps {
-  	// FIXME: maybe erase export later
-  	prop1: PropType1;
-  	prop2: PropType2;
+    // FIXME: maybe erase export later
+    prop1: PropType1;
+    prop2: PropType2;
   }
 
   // maybe some small business logics (large ones are defined explicitly at seperate files)
 
   const Component = ({ props }: ComponentProps) => {
-  	// hooks
-  	// maybe some small business logics
-  	return <></>;
+    // hooks
+    // maybe some small business logics
+    return <></>;
   };
 
   export default Component;
@@ -162,3 +162,29 @@ This page can be accessed by: `http://localhost:5173/component-test`
 ### Analytics
 
 ![AnalyticsMainPage](./assets/AnalyticsMainPage.png)
+
+## How to perform e2e test via Playwright, MCP
+
+Install gemini-cli via npm, and modify `settings.json`
+
+```bash
+npm install -g @google/gemini-cli
+
+vim ~/.gemini/settings.json
+```
+
+```json
+// modify settings.json as the following:
+
+{
+  /* ...Other settings... */
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    }
+  }
+}
+```
+
+Start project server, open gemini cli, and prompt to check `요구사항.md` and `E2E_TEST_AGENTS.md`.
